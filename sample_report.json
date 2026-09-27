@@ -1,0 +1,18 @@
+{
+  "findings": [
+    {
+      "rule_id": "MISSING_CSP_HEADER",
+      "target": "nginx.conf",
+      "severity": "medium",
+      "description": "استجابة الخادم لا تحتوي على Content-Security-Policy header، ما يزيد خطر هجمات XSS.",
+      "raw_context": "server_tokens on; # لا يوجد أي إعداد لـ add_header Content-Security-Policy"
+    },
+    {
+      "rule_id": "DOCKER_ROOT_USER",
+      "target": "Dockerfile",
+      "severity": "high",
+      "description": "الحاوية تعمل بصلاحيات root افتراضياً، ما يزيد أثر أي اختراق للتطبيق.",
+      "raw_context": "FROM python:3.12-slim\nWORKDIR /app\nCOPY . .\nCMD [\"python\", \"app.py\"]"
+    }
+  ]
+}
